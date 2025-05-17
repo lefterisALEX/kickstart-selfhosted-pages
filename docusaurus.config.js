@@ -18,12 +18,12 @@ const config = {
   url: 'https://lefterisALEX.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/kickstart-selfhosted-services',
+  baseUrl: '/kickstart-selfhosted-pages',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'lefterisALEX', // Usually your GitHub org/user name.
-  projectName: 'kickstart-selfhosted-services', // Usually your repo name.
+  projectName: 'kickstart-selfhosted-pages', // Usually your repo name.
   deploymentBranch: 'main',
   trailingSlash: false,
 
@@ -100,7 +100,7 @@ const config = {
             position: 'left'
           },
           {
-            href: 'https://github.com/lefterisALEX/kickstart-selfhosted-services',
+            href: 'https://github.com/lefterisALEX/kickstart-selfhosted-pages',
             position: 'right'  // Optional: positions GitHub link on right side
           }
         ]

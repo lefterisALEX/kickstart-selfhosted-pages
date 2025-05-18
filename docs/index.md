@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-A fully automated (and opiniated) way to deploy and manage your selfhosted services in Hetzner using Docker Compose and Terraform.  
+A fully automated xkn(and opiniated) way to deploy and manage your selfhosted services in Hetzner using Docker Compose and Terraform.  
 This setup might be suitable for people that they:
  - want to deploy their self hosted services in a VPS accessible via VPN and not in a home server.
  - want to use the selfhosted services hobby as a way to learn IAC terraform/terragrunt 

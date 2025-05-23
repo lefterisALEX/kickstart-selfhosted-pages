@@ -1,0 +1,8 @@
+{
+  "label": "Preparation",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Required steps needed for each individual service."
+  }
+}

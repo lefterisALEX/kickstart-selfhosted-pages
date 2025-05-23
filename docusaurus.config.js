@@ -87,10 +87,10 @@ const config = {
       image: 'img/<open-graph-card>',
       navbar: {
         title: 'Cloustack',
-        logo: {
-          alt: '<logo-alt>',
-          src: 'img/<logo-file>'
-        },
+        // logo: {
+        //   alt: '<logo-alt>',
+        //   src: 'img/<logo-file>'
+        // },
         items: [
           {
             type: 'doc',
@@ -106,7 +106,8 @@ const config = {
         ]
       },
       colorMode: {
-        respectPrefersColorScheme: true
+        respectPrefersColorScheme: true,
+        disableSwitch: true // This disables the color scheme switch
       }
     }),
   // themeConfig:

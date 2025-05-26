@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Github
+# CICD - Github
 
 The following guide is going though the required preparation steps that you will need before you first run your pipeline to deploy your selfhosted services. 
 

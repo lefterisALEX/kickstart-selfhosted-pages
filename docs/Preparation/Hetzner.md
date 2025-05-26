@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-
+# Cloud Provider - Hetzner
 ## Create a new proect
 
 In [Hetzner Console](https://console.hetzner.cloud/projects) we will need to create a new proect where all our resources will be deployed.  

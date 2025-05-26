@@ -2,13 +2,13 @@
 sidebar_position: 4
 ---
 
-# AWS 
+# Terraform state - AWS 
 
 AWS S3 is used as backend to store the terraform state. If you preffer a different backend please refer to  [terragrunt](https://terragrunt.gruntwork.io/docs/features/state-backend/) documentation.
 You will need to modify the remote_state code in the parent `terrarunt.hcl` file. 
 
 ## Github Variables
-To allow github runners to store/retrieve the state in our AWS account we do it using [OpenID Connect](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
+Github runners need permissions to create an AWS S3 bucket where they store & retrieve the terraform state,we do it using [OpenID Connect](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 
 Create the three required variables in github which will be used to create an AWS S3 bucket to store the terraform state.
 
@@ -20,7 +20,8 @@ Create the three required variables in github which will be used to create an AW
 
 ## IAM Policy
 
-Create an IAM Policy with the following permissions attached. 
+First we need to create an IAM Policy with the following permissions attached. Those are the permissions that the github runners will get when they assume the IAM role we are going to create later.
+
 :::info
     Do not forget to replace the Resource strings to include your bucket name from the previous step.
 :::
@@ -48,7 +49,8 @@ Create an IAM Policy with the following permissions attached.
 
 ## IAM Role
 
-Create a new IAM Role called **github-oidc** with the following **Custom Trust Policy**.
+Then we create a new IAM Role called **github-oidc** with the following **Custom Trust Policy**.
+
 ```
 {
     "Version": "2012-10-17",

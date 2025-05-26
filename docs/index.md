@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Self-Hosted Services on Hetzner
+# Introduction
 
 
 This guide provides a fully automated and opinionated approach to deploying and managing your self-hosted services on Hetzner using Docker Compose and Terraform. This setup is ideal for individuals who:

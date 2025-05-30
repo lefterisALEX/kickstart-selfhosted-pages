@@ -21,8 +21,16 @@ In the account home page select `add a domain`.
 And then select to **Manually enter DNS records**
 ![](../../static/img/cloudflare-1.png)
 
-Enter an A record to point to the private IP of the virtual machine in Hetzner. The default IP is `192.168.156.100` , if you have changed that you need to set the new IP here.
-Remember to disable the Proxy status to DNS only.
+Enter a [wildcard DNS](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/#create-a-wildcard-record) A record to point to the private IP of the virtual machine in Hetzner.  
+
+**Type:** `A`  
+**Name:** `*`  
+**Content:** `192.168.156.100`  
+**Proxy Status:** Disabled 
+
+:::info
+    The default IP is `192.168.156.100` , if you have changed that you need to set the new IP here.
+:::
 
 ![](../../static/img/cloudflare-dns.png)
 
@@ -62,9 +70,11 @@ To create an API token with the following permissions for your zone.
 
 ![](../../static/img/cloudflare-create-token-2.png)
 
-2. Add Permissions Zone -> Zone -> Read & Zone -> DNS -> Edit . Then select specific zone  and select your domain and press Continiue to Summary. 
+2. Add the following permissions:  
+`Zone -> Zone -> Read` & `Zone -> DNS -> Edit` .  
+Then select specific zone  and select your domain and press **Continue to Summary**. 
 
-![](../../static/img/cloudflare-create-token-3.png)
+![](../../static/img/clouflare-token-3.png)
 
 3. Copy the generated API token , you will need it for the next step
 

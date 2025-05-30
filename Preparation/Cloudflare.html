@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.7.0">
 <title data-rh="true">DNS &amp; TLS certificates - Cloudflare/Let&#x27;s Encrypt | Cloudstack</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://lefterisALEX.github.io/kickstart-selfhosted-pages/img/&lt;open-graph-card&gt;"><meta data-rh="true" name="twitter:image" content="https://lefterisALEX.github.io/kickstart-selfhosted-pages/img/&lt;open-graph-card&gt;"><meta data-rh="true" property="og:url" content="https://lefterisALEX.github.io/kickstart-selfhosted-pages/Preparation/Cloudflare"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="DNS &amp; TLS certificates - Cloudflare/Let&#x27;s Encrypt | Cloudstack"><meta data-rh="true" name="description" content="The following guide is going though the required steps that you will need before you first run your pipeline to deploy your selfhosted services."><meta data-rh="true" property="og:description" content="The following guide is going though the required steps that you will need before you first run your pipeline to deploy your selfhosted services."><link data-rh="true" rel="icon" href="/kickstart-selfhosted-pages/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://lefterisALEX.github.io/kickstart-selfhosted-pages/Preparation/Cloudflare"><link data-rh="true" rel="alternate" href="https://lefterisALEX.github.io/kickstart-selfhosted-pages/Preparation/Cloudflare" hreflang="en"><link data-rh="true" rel="alternate" href="https://lefterisALEX.github.io/kickstart-selfhosted-pages/Preparation/Cloudflare" hreflang="x-default"><link rel="stylesheet" href="/kickstart-selfhosted-pages/assets/css/styles.76118980.css">
-<script src="/kickstart-selfhosted-pages/assets/js/runtime~main.b547763f.js" defer="defer"></script>
+<script src="/kickstart-selfhosted-pages/assets/js/runtime~main.35630bec.js" defer="defer"></script>
 <script src="/kickstart-selfhosted-pages/assets/js/main.9569de66.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -18,9 +18,13 @@ Additionally LetsEncrypt is managing the rotation of the TLS certificate , using
 <p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/cloudflare-add-domain-7ecaae6aca1feb825d5c84945173d5a2.png" width="1270" height="471" class="img_ev3q"></p>
 <p>And then select to <strong>Manually enter DNS records</strong>
 <img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/cloudflare-1-4a42d68f1be6faf3da3b378ab156c8e6.png" width="1270" height="923" class="img_ev3q"></p>
-<p>Enter an A record to point to the private IP of the virtual machine in Hetzner. The default IP is <code>192.168.156.100</code> , if you have changed that you need to set the new IP here.
-Remember to disable the Proxy status to DNS only.</p>
-<p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/cloudflare-dns-0884717a171809d894c8ba44024acc61.png" width="1270" height="923" class="img_ev3q"></p>
+<p>Enter a <a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/#create-a-wildcard-record" target="_blank" rel="noopener noreferrer">wildcard DNS</a> A record to point to the private IP of the virtual machine in Hetzner.</p>
+<p><strong>Type:</strong> <code>A</code><br>
+<strong>Name:</strong> <code>*</code><br>
+<strong>Content:</strong> <code>192.168.156.100</code><br>
+<strong>Proxy Status:</strong> Disabled</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The default IP is <code>192.168.156.100</code> , if you have changed that you need to set the new IP here.</p></div></div>
+<p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/cloudflare-dns-48c63c79c54cefbe65ba933e8b841b91.png" width="1262" height="925" class="img_ev3q"></p>
 <p>You will see now very likely that the domain is pending activation. This is because you have acquired the domain from a different registar and not Cloudflare.</p>
 <p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/cloudflare-pending-activation-3f16db522dfea9b72d0388c3a54f6f4b.png" width="1270" height="923" class="img_ev3q"></p>
 <p>You will need to go to your domain registar and update the nameservers to use the Cloudflare Nameservers.</p>
@@ -45,9 +49,11 @@ Remember to disable the Proxy status to DNS only.</p>
 <p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/clouflare-create-token-1-46ff000ff07c321f4057d4cd1720841e.png" width="1417" height="845" class="img_ev3q"></p>
 <p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/cloudflare-create-token-2-7b5a3afb2c5df183b7e6fede833bc2b8.png" width="1415" height="927" class="img_ev3q"></p>
 <ol start="2">
-<li>Add Permissions Zone -&gt; Zone -&gt; Read &amp; Zone -&gt; DNS -&gt; Edit . Then select specific zone  and select your domain and press Continiue to Summary.</li>
+<li>Add the following permissions:<br>
+<code>Zone -&gt; Zone -&gt; Read</code> &amp; <code>Zone -&gt; DNS -&gt; Edit</code> .<br>
+<!-- -->Then select specific zone  and select your domain and press <strong>Continue to Summary</strong>.</li>
 </ol>
-<p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/cloudflare-create-token-3-07d67197261228d53affb5b78e68d0ea.png" width="1415" height="927" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" src="/kickstart-selfhosted-pages/assets/images/clouflare-token-3-ea9ea9ba356a0126c2d5adc39e6905bc.png" width="1260" height="937" class="img_ev3q"></p>
 <ol start="3">
 <li>Copy the generated API token , you will need it for the next step</li>
 </ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/kickstart-selfhosted-pages/Preparation/aws"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Terraform state - AWS</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/kickstart-selfhosted-pages/Preparation/Infisical"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">External Secrets - Infisical</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#add-a-domain" class="table-of-contents__link toc-highlight">Add a domain</a></li><li><a href="#generate-api-key" class="table-of-contents__link toc-highlight">Generate API key</a></li></ul></div></div></div></div></main></div></div></div></div>

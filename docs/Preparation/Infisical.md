@@ -33,94 +33,31 @@ Lastly assign the new identity as Project Viewer
 ![](../../static/img/infisical-project-2.png)
 
 
-## Add secrets
+## Add required secrets
 
-Is important first to understand how the secrets are copied in to the VPS first.  
-Below a structure of the folder containers our applications.
+Is important first to understand how the secrets are copied in to the VPS first, if you haven't done already take a look first in [how it works](../how_it_works.md) section.
 
-```
-├── docker-compose.yaml
-├── adguard
-│   └── docker-compose.yaml
-├── docker-backup
-│   └── docker-compose.yaml
-├── traefik
-│   └── docker-compose.yaml
-└── uptime
-    └── docker-compose.yaml
-```
+We need to create 3 secrets in order to be able to complete the DNS challenge, we can create those secrets by pressing the **"Add Secret"** button.
 
-In this structure there is a main `docker-compose.yaml` file which is used to configure:
-1. Which other `docker-compose.yaml` files should be included, so in other words which other services should be enabled.
-2. The docker network name and subnet.
 
-example of a root docker-compose.yaml file
 
-```
-version: "3"
-include:
-  - ./traefik/docker-compose.yaml
-  - ./docker-backup/docker-compose.yaml
-  - ./dashy/docker-compose.yaml
-  - ./uptime/docker-compose.yaml
-networks:
-  private_network:
-    name: private_network
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.29.1.0/24
-```
+**DOMAIN:** The domain name for which you want to enable TLS. In this example `238749.xyz`
 
-All applications then have their own dedicated  `docker-compose.yaml` file under a specific directory.  
-For instance for the traefik application the `docker-compose.yaml` is the `traefik/docker-compose.yaml`
+To create the secret we click on **"Add secret"** button and fill the `Key` `Value` and `Environments` where this secret will be available.
 
-```
-version: "3.8"
+:::note
+    Make sure all secrets are available for Production environment since the deployr script that downloads the secrets is looking for the secrets available for Production Environment only
+:::
+![](../../static/img/infisical-add-secret-button.png)
+![](../../static/img/infisical-domain-secret-create.png)
 
-name: traefik
 
-services:
-  traefik:
-    image: traefik:v3.3
-    container_name: traefik
-    ports:
-      - 80:80
-      - 443:443
-      - 8080:8080
-    networks:
-      private_network:
-    env_file:
-      - .secrets
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /mnt/data/traefik/letsencrypt:/letsencrypt
-    command:
-      - "--api=true"
-      - "--api.dashboard=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-      - "--certificatesresolvers.letsencrypt.acme.dnschallenge=true"
-      - "--certificatesresolvers.letsencrypt.acme.dnschallenge.provider=cloudflare"
-      - "--certificatesresolvers.letsencrypt.acme.email=${EMAIL}"
-      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dashboard.entrypoints=websecure"
-      - "traefik.http.routers.dashboard.tls.certresolver=letsencrypt"
-      - "traefik.http.routers.dashboard.rule=Host(`dashboard.${DOMAIN}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
-      - "traefik.http.routers.dashboard.service=api@internal"
-    restart: always
-```
+**EMAIL:** The email address which will provided to Let's Encrypt.
 
-### Application specific secrets
-In the above `docker-compose.yaml` for traefik we see that there are some environment variables used, `${DOMAIN}` and `${EMAIL}` . There is also a `env_file` read from the file `.secrets`.
-The way how it works is that when the deployr script is executed is going to pull all secrets from infisical and place them under the same directory as defined in infisical.  
-So all secrets stored in infisical under the directory traefik, are going to be copied to the file `./traefik/.secrets` and thus available to the containers traefik as defined in `./traefik/docker-compose.yaml`
+![](../../static/img/infisical-domain-secret.png)
+**CF_DNS_API_TOKEN**: The API token you generated in your Cloudflare account from the previous step. This token will be used to authenticate API requests to manage DNS records. This secret should be created inside a directory called `traefik`, since should be available only in the traefik container.
+![](../../static/img/infisical-create-directory.png)
+![](../../static/img/infisical-traefik-directory.png)
+![](../../static/img/infisical-traefik-secret.png)
 
-### Common variables
-In addition any secrets stored in the root directory in infisical will be available as variables accross all containers.  
 

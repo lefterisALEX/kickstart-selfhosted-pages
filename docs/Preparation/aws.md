@@ -7,16 +7,16 @@ sidebar_position: 4
 AWS S3 is used as backend to store the terraform state. If you preffer a different backend please refer to  [terragrunt](https://terragrunt.gruntwork.io/docs/features/state-backend/) documentation.
 You will need to modify the remote_state code in the parent `terrarunt.hcl` file. 
 
-## Github Variables
+## Github Secrets
 Github runners need permissions to create an AWS S3 bucket where they store & retrieve the terraform state,we do it using [OpenID Connect](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 
-Create the three required variables in github which will be used to create an AWS S3 bucket to store the terraform state.
+We will need first to create 3 repository secrets in Github which will be used to create an AWS S3 bucket to store the terraform state.
 
-**AWS_ACCOUNT_ID** -> Your AWS ACCOUNT ID.  
-**AWS_REGION**  -> The AWS Region you want the bucket to be created.  
-**AWS_S3_BUCKET** -> The AWS S3 bucket name.  
+**AWS_ACCOUNT_ID**:  Your AWS ACCOUNT ID.  
+**AWS_REGION**: The AWS Region you want the bucket to be created.  
+**AWS_S3_BUCKET**: The AWS S3 bucket name.  
 
-![](../../static/img/github-set-variables.png)
+![](../../static/img/github-aws-secrets.png)
 
 ## IAM Policy
 

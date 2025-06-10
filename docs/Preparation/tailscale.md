@@ -2,9 +2,9 @@
 sidebar_position: 3
 ---
 
-# VPN - Tailscale
+# VPN
 
-Tailscale is mesh VPN network which allows devices to connect securely and directly over the internet, using the WireGuard protocol
+We are using Tailscale as a VPN service. Tailscale is mesh VPN network which allows devices to connect securely and directly over the internet, using the WireGuard protocol
 We are using Tailscale so you can connect your mobile device to the tailscale network, so you can securely access your selfhosted services from anywhere.
 You can also connect add a home router to the tailscale so you can allow all devices in your home network to reach the selfhosted services.
 

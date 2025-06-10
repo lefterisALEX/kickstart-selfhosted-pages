@@ -2,9 +2,9 @@
 sidebar_position: 5
 ---
 
-# DNS & TLS certificates - Cloudflare/Let's Encrypt
+# DNS & TLS certificates
 
-The following guide is going though the required steps that you will need before you first run your pipeline to deploy your selfhosted services. 
+We are using Cloudflare to manage the DNS zone and Let's Encrypt for managing the TLS certificates. The following guide is going though the required steps that you will need before you first run your pipeline to deploy your selfhosted services. 
 
 To complete this step you will need to have a domain (or subdomain) with an A record pointing to your Private IP of your hetzner server.
 Additionally LetsEncrypt is managing the rotation of the TLS certificate , using DNS challenge. 

@@ -2,9 +2,11 @@
 sidebar_position: 1
 ---
 
-# CICD - Github
+# CICD
 
-The following guide is going though the required preparation steps that you will need before you first run your pipeline to deploy your selfhosted services. 
+## What we use?
+
+The following guide is going though the required preparation steps that you will need before you first run your pipeline to deploy your selfhosted services. We are using Github and Github Actions for that.
 
 ## Use of kickstart template
 

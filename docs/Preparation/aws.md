@@ -2,9 +2,8 @@
 sidebar_position: 4
 ---
 
-# Terraform state - AWS 
-
-AWS S3 is used as backend to store the terraform state. If you preffer a different backend please refer to  [terragrunt](https://terragrunt.gruntwork.io/docs/features/state-backend/) documentation.
+# Terraform state
+AWS S3 is used as backend to store the terraform state. If you preffer a [different backend](https://developer.hashicorp.com/terraform/language/backend) please refer to  [terragrunt](https://terragrunt.gruntwork.io/docs/features/state-backend/) documentation.
 You will need to modify the remote_state code in the parent `terrarunt.hcl` file. 
 
 ## Github Secrets

@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# External Secrets - Infisical
+# External Secrets
 
 We are using [Infisical](https://infisical.com/) to securely store all secrets related to your applications. Those secrets are pulled periodically (every 3 minutes) and can be used from the containers.
 

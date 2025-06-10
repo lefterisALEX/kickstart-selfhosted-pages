@@ -1,0 +1,9 @@
+{
+  "label": "Extend the services",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "This example covers an example where Traefik and 3 more services are deployed. You can of course extend it and include your own service"
+  }
+}
+

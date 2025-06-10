@@ -1,7 +1,10 @@
 ---
 sidebar_position: 2
 ---
-# Cloud Provider - Hetzner
+# Cloud Provider
+
+As a cloud provider we are using Hetzner. This page will guide you though the pre-required steps needed to do in Hetzner Console before you do the first run of the pipeline.
+
 ## Create a new proect
 
 In [Hetzner Console](https://console.hetzner.cloud/projects) we will need to create a new proect where all our resources will be deployed.  

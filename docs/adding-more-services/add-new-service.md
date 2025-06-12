@@ -35,12 +35,12 @@ We need first to place this file under `containers-host/apps/uptime/docker-compo
 
 ```
 ├── docker-compose.yaml
-├── .env # This file will contain the secrets highlighted above
+├── .env 
 ├── traefik
 │   └── docker-compose.yaml
 ├── uptime
 │   └── docker-compose.yaml
-└── dashy
+└── docker-backup
     └── docker-compose.yaml
 
 ```
@@ -51,7 +51,6 @@ version: "3"
 include:
   - ./traefik/docker-compose.yaml
   - ./docker-backup/docker-compose.yaml
-  - ./dashy/docker-compose.yaml
   # Add the line below to include the uptime-kuma docker-compose
   - ./uptime/docker-compose.yaml
 networks:

@@ -8,32 +8,37 @@ sidebar_position: 2
 
 The objective is to establish a fully automated deployment process that provisions all necessary infrastructure and containers as specified in the docker-compose.yaml files through a continuous integration/continuous deployment (CI/CD) pipeline. Aside from a few manual steps outlined in the Preparation section, all configurations will be defined in code. 
 
-## Containers Deployment
+## Components
 
-When the setup is deployed a VPS will be launched in Hetzner were your containers will run.
-In this VPS your github repository will be also cloned under `/root/deployr/` 
+### Apps repository
+
+This repository is where your `docker-compose` files are located. The Docker Compose files for the [kickstart-selfhosted-services](https://github.com/lefterisALEX/kickstart-selfhosted-services) template repository are located in the `container-host/apps` directory within the same repository, but it can configured to be any other repository.  
+
+### VPS
+A server that is running in a private network in Hetzner. When the server is boostraped docker/docker-compose is installed and your apps repository is also cloned under `/root/deployr` .
 
 ### Deployr script
 
-The deployr script is executed periodically (every 3 minutes) and taking care of the following actions:
-1. Fetch latest code from your repository.
+The [deployr](https://github.com/lefterisALEX/docker-compose-deployr) script is pre-installed in the VPS and it's role is that periodically (every 3 minutes): 
+1. Fetch latest code from your apps repository.
 2. Fetch all secrets from your infisical project and save them locally in the VPS (see Secrets section below for more info)
-2. If there is any new commit detected then `docker compose up -d /root/deployr/containers-host/apps/docker-compose.yaml` is executed 
+3. If a new commit is detected, the system will execute the command docker compose up -d targeting your apps directory. By default, this command runs as docker compose up -d `/root/deployr/containers-host/apps/docker-compose.yaml`
 
-### Docker-compose structure
+
+## Docker-compose structure
 Instead of having a large `docker-compose.yaml` file where we define all the services, we use instead the `include` command to split the configuration in multiple files.
 
-Below a structure of the folder `containers-host/apps` in your repository.
+Below is the default structure of the containers-host/apps folder in the kickstart-selfhosted-services template. This structure includes a root docker-compose.yaml file, along with a specific docker-compose.yaml file for configuring Traefik. Additionally, there is a docker-backup directory that contains its own docker-compose.yaml file for managing backup operations.
 
 ```
 ├── docker-compose.yaml
 ├── traefik
 │   └── docker-compose.yaml
-└── uptime
+└── docker-backup
     └── docker-compose.yaml
 ```
-#### root docker-compose file
-In this structure there is a main `docker-compose.yaml` file which is used to configure:
+### Root docker-compose file
+The root  `docker-compose.yaml` file which is used to configure:
 1. Which other `docker-compose.yaml` files should be included, so in other words which other services should be enabled.
 2. The docker network name and subnet.
 
@@ -44,8 +49,6 @@ version: "3"
 include:
   - ./traefik/docker-compose.yaml
   - ./docker-backup/docker-compose.yaml
-  - ./dashy/docker-compose.yaml
-  - ./uptime/docker-compose.yaml
 networks:
   private_network:
     name: private_network
@@ -55,9 +58,9 @@ networks:
         - subnet: 172.29.1.0/24
 ```
 
-#### application specific docker-compose file
+### Application docker-compose files
 
-All applications in this example (traefik/docker-backup/dashy/uptime) should have then their own dedicated  `docker-compose.yaml` file under a specific directory.  
+Both applications in this example (traefik/docker-backup) should have then their own dedicated  `docker-compose.yaml` file under a specific directory.  
 For instance for the traefik application the `docker-compose.yaml` is the `traefik/docker-compose.yaml`
 
 ```
@@ -128,7 +131,7 @@ All secrets that are stored in the root directory of infisical are going to be s
 ├── .env #This file will contain the secrets highlighted above
 ├── traefik
 │   └── docker-compose.yaml
-└── uptime
+└── docker-backup
     └── docker-compose.yaml
 ```
 
@@ -146,7 +149,7 @@ All secrets stored in Infisical under the `traefik` directory will be copied to 
 ├── traefik
 │   ├── docker-compose.yaml
 │   └── .secrets #This file will contain the secrets highlighted above
-└── uptime
+└── docker-backup
     └── docker-compose.yaml
 ```
 :::tip

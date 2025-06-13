@@ -12,7 +12,7 @@ This guide provides a fully automated and opinionated approach to deploying and 
 
 ## Overview
 
-This project demonstrates how to leverage the Cloudstack Terraform module to deploy your self-hosted services efficiently. By following the steps outlined in this guide, you will set up a Hetzner instance that automatically clones your code from a GitHub repository, manages secrets using Infisical, and utilizes Docker Compose for application deployment.
+This project demonstrates how to leverage the [Hetzner Seflhosted Services Host](https://registry.terraform.io/modules/lefterisALEX/selfhosted-services-host/hetzner/latest) Terraform module to deploy your self-hosted services efficiently. By following the steps outlined in this guide, you will set up a Hetzner instance that automatically clones your code from a GitHub repository, manages secrets using Infisical, and utilizes Docker Compose for application deployment.
 
 ![Example banner](../static/img/architecture.svg)
 ## Services Used

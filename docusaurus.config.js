@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Cloudstack',
+  title: 'KickstartSelfhostedServices',
   tagline: 'Selfhostedl',
   favicon: 'img/favicon.ico',
 
@@ -86,7 +86,7 @@ const config = {
     ({
       image: 'img/<open-graph-card>',
       navbar: {
-        title: 'Cloustack',
+        title: 'Kickstart Selfhosted Services',
         // logo: {
         //   alt: '<logo-alt>',
         //   src: 'img/<logo-file>'

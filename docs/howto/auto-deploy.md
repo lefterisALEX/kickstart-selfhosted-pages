@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 # Enabling Automatic Pipeline Execution on PR Merge
 
@@ -24,3 +24,4 @@ By uncommenting the lines related to the push event, the deployment pipeline wil
 :::note
     Please note that the pipeline will not be triggered if there are changes made to any files within the `containers-host/apps` directory. This is intentional, as we want the deployer script to manage updates to the Docker Compose files located in the apps directory.
 :::
+

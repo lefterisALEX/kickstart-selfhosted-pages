@@ -187,3 +187,10 @@ services:
     restart: unless-stopped
 ```
 
+## Access the new service
+
+Once the changes are committed to the repository, the deployr script will automatically detect the new commit during its next run and pull the updated code to the VPS. After the code is successfully pulled, deployr will execute the command docker-compose up to deploy the updated service, Uptime Kuma.
+
+To verify that the new service has been deployed, simply navigate to `https://uptime.<your-domain>` in your browser. For example, if your domain is `238749.xyz`, you should be able to access the login page of Uptime Kuma at `https://uptime.238749.xyz`.
+
+![](../static/img/uptime-login.png)

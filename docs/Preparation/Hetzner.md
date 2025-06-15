@@ -5,14 +5,14 @@ sidebar_position: 2
 
 As a cloud provider we are using Hetzner. This page will guide you though the pre-required steps needed to do in Hetzner Console before you do the first run of the pipeline.
 
-## Create a new proect
+## Create a new project
 
 In [Hetzner Console](https://console.hetzner.cloud/projects) we will need to create a new proect where all our resources will be deployed.  
 To do that we click on **"+ New Project"** and give it a name of your choice.
 ![](../../static/img/hetzner-add-new-project-1.png)
 ![](../../static/img/hetzner-add-new-project-2.png)
 
-## Upload our SSH public key
+## Upload our SSH public key {#ssh}
 
 **why we need this?**  
 This key will be added in `~/.ssh/authorized_keys` of the VPS and will allow us to connect through SSH to the remote machine.

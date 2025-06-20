@@ -1,8 +1,8 @@
 ---
 sidebar_position: 4
 ---
+# Terraform State
 
-# Terraform state
 AWS S3 is used as backend to store the terraform state. If you preffer a [different backend](https://developer.hashicorp.com/terraform/language/backend) please refer to  [terragrunt](https://terragrunt.gruntwork.io/docs/features/state-backend/) documentation.
 You will need to modify the remote_state code in the parent `terrarunt.hcl` file. 
 
@@ -15,7 +15,7 @@ We will need first to create 3 repository secrets in Github which will be used t
 **AWS_REGION**: The AWS Region you want the bucket to be created.  
 **AWS_S3_BUCKET**: The AWS S3 bucket name.  
 
-![](../../static/img/github-aws-secrets.png)
+![](../../../static/img/github-aws-secrets.png)
 
 ## IAM Policy
 
@@ -44,7 +44,7 @@ First we need to create an IAM Policy with the following permissions attached. T
 }
 ```
 
-![](../../static/img/iam-policy.png)
+![](../../../static/img/iam-policy.png)
 
 ## IAM Role
 
@@ -78,16 +78,16 @@ Then we create a new IAM Role called **github-oidc** with the following **Custom
 :::info
     Replace the AWS Account ID in Principal with your AWS account ID and also the repository with your own repository.
 :::
-![](../../static/img/iam-role.png)
+![](../../../static/img/iam-role.png)
 
 Press next and in the **Add Permissions** select the IAM policy you created earlier. Give a new to the IAM role and press Create.
-![](../../static/img/iam-role-select-policy.png)
+![](../../../static/img/iam-role-select-policy.png)
 
 :::info
     Make sure the name of the role is **github-oidc** otherwise is not going to work.
 ::: 
 
-![](../../static/img/aws-oidc-role.png)
+![](../../../static/img/aws-oidc-role.png)
 
 ## Identity Provider
 
@@ -95,6 +95,6 @@ Create a new Identity Provider of type "OpenID Connect" with the following Provi
 **Provider URL:** `https://token.actions.githubusercontent.com`  
 **Audience:** `sts.amazonaws.com`  
 
-![](../../static/img/iam-provider.png)
-![](../../static/img/oidc-github.png)
+![](../../../static/img/iam-provider.png)
+![](../../../static/img/oidc-github.png)
 

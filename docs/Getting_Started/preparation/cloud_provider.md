@@ -9,8 +9,8 @@ As a cloud provider we are using Hetzner. This page will guide you though the pr
 
 In [Hetzner Console](https://console.hetzner.cloud/projects) we will need to create a new proect where all our resources will be deployed.  
 To do that we click on **"+ New Project"** and give it a name of your choice.
-![](../../static/img/hetzner-add-new-project-1.png)
-![](../../static/img/hetzner-add-new-project-2.png)
+![](../../../static/img/hetzner-add-new-project-1.png)
+![](../../../static/img/hetzner-add-new-project-2.png)
 
 ## Upload our SSH public key {#ssh}
 
@@ -21,10 +21,10 @@ If you want to learn more about how to generate an SSH keypair please check [her
 
 In the project you just created under **"Security"** press **"Add SSH key"** and paste your SSH public key. 
 
-![](../../static/img/ssh-key.png)
+![](../../../static/img/ssh-key.png)
 
 
-![](../../static/img/upload-ssh.png)
+![](../../../static/img/upload-ssh.png)
 
 :::info
     Naming the SSH key main will not require changes in the terraform module since is the default key which will be looked up. 
@@ -37,10 +37,10 @@ An API token can give certain permissions in the project, for example create a n
 
 In the newly created project under **Security** -> **API Tokens** click on **generate API token** with Read & Write permissions 
 
-![](../../static/img/api-key-1.png)
+![](../../../static/img/api-key-1.png)
 
-![](../../static/img/api-key-2.png)
+![](../../../static/img/api-key-2.png)
 
-Store the token as a [GitHub repository secret](Github#github-secret) in your repository under the name `HCLOUD_TOKEN`
+Store the token as a [GitHub repository secret](../../Getting_Started/preparation/cicd#github-secret) in your repository under the name `HCLOUD_TOKEN`
 
-![](../../static/img/github-secret-hcloud.png)
+![](../../../static/img/github-secret-hcloud.png)

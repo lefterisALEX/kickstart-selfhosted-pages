@@ -151,7 +151,7 @@ services:
 In some containers, it may be necessary to inject secrets, such as credentials for connecting to a database. There are various methods to achieve this, and in our case, we are utilizing Infisical to manage these secrets. The deployr script will retrieve the credentials stored in Infisical and create a file named `.secrets` in the same directory as the `docker-compose.yaml` file for the uptime-kuma service.
 To begin, we need to add the required secrets to Infisical under a new directory `uptime`.
 
-![](../static/img/infisical-uptime.png)
+![](../../static/img/infisical-uptime.png)
 
 The deployr script will then access all secrets within this `uptime` directory and generate the `.secrets` file in the `uptime` subdirectory of the apps directory, which is the same location as the uptime-kuma `docker-compose.yaml` file.
 
@@ -193,4 +193,4 @@ Once the changes are committed to the repository, the deployr script will automa
 
 To verify that the new service has been deployed, simply navigate to `https://uptime.<your-domain>` in your browser. For example, if your domain is `238749.xyz`, you should be able to access the login page of Uptime Kuma at `https://uptime.238749.xyz`.
 
-![](../static/img/uptime-login.png)
+![](../../static/img/uptime-login.png)

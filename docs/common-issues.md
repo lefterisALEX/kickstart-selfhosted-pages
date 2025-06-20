@@ -7,7 +7,7 @@ sidebar_position: 8
 
 <summary>Error: SSH key not found: main</summary>
 
-The issue is that there is not SSH called main in your Hetzner Project. Please refer to section  [ssh-section](Preparation/Hetzner#ssh)
+The issue is that there is not SSH called main in your Hetzner Project. Please refer to section  [ssh-section](./Getting_Started/preparation/cloud_provider#ssh)
 
 </details>
 
@@ -15,8 +15,8 @@ The issue is that there is not SSH called main in your Hetzner Project. Please r
 <summary>Error: Could not assume role with OIDC: Not authorized to perform sts:AssumeRoleWithWebIdentity</summary>
 
 The issue is that the github runner do not have permissions to assume the IAM role in AWS. Make sure that:  
-1. The [Trusted Policy](Preparation/aws#iam-role) the repository name is the correct one. 
-2. The IAM role `github-oidc`  [exists](Preparation/aws#iam-role) and is called  `github-oidc`
+1. The [Trusted Policy](./Getting_Started/preparation/terraform_state#iam-role) the repository name is the correct one. 
+2. The IAM role `github-oidc`  [exists](./Getting_Started/preparation/terraform_state#iam-role) and is called  `github-oidc`
 </details>
 
 <details>
@@ -49,7 +49,7 @@ You will see this error in logs of the deployr script. The reason might be one o
     3. The infisical project ID is wrong
     4. The infisical_api_url is set to wrong region.
 
-Please review the configuration of External Secret at the preparation [page](Preparation/Infisical).
+Please review the configuration of External Secret at the preparation [page](./Getting_Started/preparation/external_secrets.md).
 </details>
 
 

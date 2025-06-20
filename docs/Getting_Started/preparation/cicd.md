@@ -10,7 +10,7 @@ The following guide is going though the required preparation steps that you will
 
 ## Use of kickstart template
 
-1. Go to [kickstart-selfhosted-services](../..tps://github.com/lefterisALEX/kickstart-selfhosted-services) repository and press "Use this template" to create a new repository based on this template repository.  
+1. Go to [kickstart-selfhosted-services](https://github.com/lefterisALEX/kickstart-selfhosted-services) repository and press "Use this template" to create a new repository based on this template repository.  
 
 ![](../../../static/img/use-template.png)
 

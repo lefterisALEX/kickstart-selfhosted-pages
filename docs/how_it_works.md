@@ -117,7 +117,7 @@ It is not necessary to store application-specific persistent data under the dire
 ## Secrets
 
 ### Infrastructure secrets
-All secrets, except those use by the containers are storeed as [repository secrets in Github](Preparation/Github#github-secret), so they can be consumed during the execution of the pipeline.
+All secrets, except those use by the containers are storeed as [repository secrets in Github](./Getting_Started/preparation/cicd#github-secret), so they can be consumed during the execution of the pipeline.
 
 ### Common Secrets for all Applications
 

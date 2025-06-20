@@ -10,12 +10,12 @@ You can also connect add a home router to the tailscale so you can allow all dev
 
 ## Before you login
 
-If you want other people to use your services is better to create a [github organization](http/docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch), and invite those people in that organization.
+If you want other people to use your services is better to create a [github organization](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch), and invite those people in that organization.
 That way other people can also connect to your tailscale network , so they can access your services.
 You can create a github organization by clicking on your icon in top right corner and select **"Your Organizations"**  and then click on **"New Organization"**
 
 ## First time login
-Login to [tailscale](http/login.tailscale.com/) using Github as Identity Provider (select then the organization if you created).   
+Login to [tailscale](https://login.tailscale.com/) using Github as Identity Provider (select then the organization if you created).   
 After you login make sure you change the account to **Personal Usage**.
 
 

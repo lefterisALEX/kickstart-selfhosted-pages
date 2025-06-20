@@ -10,12 +10,12 @@ You can also connect add a home router to the tailscale so you can allow all dev
 
 ## Before you login
 
-If you want other people to use your services is better to create a [github organization](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch), and invite those people in that organization.
+If you want other people to use your services is better to create a [github organization](http/docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch), and invite those people in that organization.
 That way other people can also connect to your tailscale network , so they can access your services.
 You can create a github organization by clicking on your icon in top right corner and select **"Your Organizations"**  and then click on **"New Organization"**
 
 ## First time login
-Login to [tailscale](https://login.tailscale.com/) using Github as Identity Provider (select then the organization if you created).   
+Login to [tailscale](http/login.tailscale.com/) using Github as Identity Provider (select then the organization if you created).   
 After you login make sure you change the account to **Personal Usage**.
 
 
@@ -32,31 +32,31 @@ Go to tab `Access Controls` and add the folllowing snippet to auto approve the r
 ```
 	"autoApprovers": {
 		"routes": {
-			"172.29.0.0/16":    ["username@github"],
-			"192.168.156.0/24": ["username@github"],
+			"172.29.016":    ["username@github"],
+			"192.168.15624": ["username@github"],
 		},
 	},
 ```
 
 The default settings of the module we are deploying have:  
-Docker Network: `172.29.0.0/16`  
-Hetzner Network: `192.168.156.0/24`  
+Docker Network: `172.29.016`  
+Hetzner Network: `192.168.15624`  
 
 :::info
-If you have changed the default subnets for the docker or/and hetzner network you will need to update the snippet accordingly.  
+If you have changed the default subnets for the docker and hetzner network you will need to update the snippet accordingly.  
 You need also to replace username@github with your username.
 :::
 
-![](../../static/img/tailscale-acl.png)
+![](../../../static/img/tailscale-acl.png)
 
 ## Generate Auth Key
 Navigate to `Settings -> Personal Settings -> Keys` and press **Generate an auth key**.  
 
-![](../../static/img/tailscale-auth-key.png)
+![](../../../static/img/tailscale-auth-key.png)
 
 In the options choose to be reusable and ephemeral.
 
-![](../../static/img/tailscale-auth-key-2.png)
+![](../../../static/img/tailscale-auth-key-2.png)
 
-Store the token as a [GitHub secret](Github#github-secret) in your repository under the name `TAILSCALE_AUTH_KEY`
+Store the token as a [GitHub secret](../../Getting_Started/preparation/cicd#github-secret) in your repository under the name `TAILSCALE_AUTH_KEY`
 

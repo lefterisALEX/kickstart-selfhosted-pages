@@ -16,10 +16,10 @@ Additionally LetsEncrypt is managing the rotation of the TLS certificate , using
 ### Add a domain
 In the account home page select `add a domain`. 
 
-![](../../static/img/cloudflare-add-domain.png)  
+![](../../../static/img/cloudflare-add-domain.png)  
 
 And then select to **Manually enter DNS records**
-![](../../static/img/cloudflare-1.png)
+![](../../../static/img/cloudflare-1.png)
 
 Enter a [wildcard DNS](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/#create-a-wildcard-record) A record to point to the private IP of the virtual machine in Hetzner.  
 
@@ -32,11 +32,11 @@ Enter a [wildcard DNS](https://developers.cloudflare.com/dns/manage-dns-records/
     The default IP is `192.168.156.100` , if you have changed that you need to set the new IP here.
 :::
 
-![](../../static/img/cloudflare-dns.png)
+![](../../../static/img/cloudflare-dns.png)
 
 You will see now very likely that the domain is pending activation. This is because you have acquired the domain from a different registar and not Cloudflare.
 
-![](../../static/img/cloudflare-pending-activation.png)
+![](../../../static/img/cloudflare-pending-activation.png)
 
 You will need to go to your domain registar and update the nameservers to use the Cloudflare Nameservers.
 ```
@@ -49,7 +49,7 @@ In [this](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#
 
 Below an example of the required change in case you purchased the domain through [namecheap.com](https://www.namecheap.com/).
 
-![](../../static/img/namecheap-ns.png)
+![](../../../static/img/namecheap-ns.png)
 
 ## Generate API key
 
@@ -66,15 +66,15 @@ To create an API token with the following permissions for your zone.
 
 1. Go to Profile -> API Tokens -> Create Token -> Create Token -> Create Custom Token
 
-![](../../static/img/clouflare-create-token-1.png)
+![](../../../static/img/clouflare-create-token-1.png)
 
-![](../../static/img/cloudflare-create-token-2.png)
+![](../../../static/img/cloudflare-create-token-2.png)
 
 2. Add the following permissions:  
 `Zone -> Zone -> Read` & `Zone -> DNS -> Edit` .  
 Then select specific zone  and select your domain and press **Continue to Summary**. 
 
-![](../../static/img/clouflare-token-3.png)
+![](../../../static/img/clouflare-token-3.png)
 
-3. Copy the generated API token , you will need it for the next step
+3. Copy the generated API token , you will need it for the next step where you create the external secrets.
 

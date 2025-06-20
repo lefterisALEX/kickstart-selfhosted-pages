@@ -119,11 +119,11 @@ It is not necessary to store application-specific persistent data under the dire
 ### Infrastructure secrets
 All secrets, except those use by the containers are storeed as [repository secrets in Github](Preparation/Github#github-secret), so they can be consumed during the execution of the pipeline.
 
-### Application specific secrets
+### Common Secrets for all Applications
 
 
 Secrets that need to be used inside the containers are stored as external secrets at [infisical](https://infisical.com/).
-All secrets that are stored in the root directory of infisical are going to be stored in the VPS in an `.env` file along with the root `docker-compose.yaml` . That way those secrets will be available to all containers as environment variables.
+All secrets that are stored in the root directory of infisical are going to be downloaded and stored in the VPS in an `.env` file along with the root `docker-compose.yaml` . That way those secrets will be available to all containers as environment variables.
 ![](../static/img/infisical-root-secrets.png)
 
 ```yaml
@@ -139,8 +139,10 @@ All secrets that are stored in the root directory of infisical are going to be s
     Downloading the secrets and storing them in the `.env` file is done by the deployr script and this action is executed periodically. 
 :::
 
+### Application Specific Secrets
 
-All secrets stored in Infisical under the `traefik` directory will be copied to the file `./traefik/.secrets`, making them accessible to the Traefik containers as defined in `./traefik/docker-compose.yaml`.
+For secrets that we want to be available only for specific containers we can store them under a directory at infisical with the name of the application. (The directory name at the infisical should match the directory name of the application in the apps directory).  
+For example in the kickstarted example all secrets stored in Infisical under the `traefik` directory will be copied to the file `./traefik/.secrets`, making them accessible to the Traefik containers as defined in `./traefik/docker-compose.yaml`.
 ![](../static/img/infisical-traefik-secret.png)
 
 ```yaml

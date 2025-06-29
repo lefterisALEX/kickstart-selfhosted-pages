@@ -53,3 +53,10 @@ Please review the configuration of External Secret at the preparation [page](./G
 </details>
 
 
+<details>
+<summary>conflicts with imported resourcei</summary>
+
+You will see this error in logs of the deployr script. The reason is that you have define two services with the same name  in two different `docker-compose.yaml` files. You need to rename one of the two services so both are unique.
+
+</details>
+
